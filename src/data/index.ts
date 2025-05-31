@@ -8,6 +8,7 @@ export const blocks = [
   'leaves',
   'glass',
 ];
+export const directions = ['front', 'back', 'left', 'right', 'top', 'bottom'];
 export const layers = 9;
 export const rows = 9;
 export const columns = 9;

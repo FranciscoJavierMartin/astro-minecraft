@@ -1,10 +1,36 @@
 ---
+import { directions } from '@/data';
+
 interface Props {
-  block: string
-  index: number
+  layer: number;
+  row: number;
+  column: number;
+  block: string;
+  index: number;
+  name: string;
+  selectedBlock: string;
 }
 
-const {block, index} = Astro.props
+const { block, index, name, selectedBlock, layer, row, column } = Astro.props;
+
+const id: string = `${name}-block`;
+const checked: boolean = index === 0;
+
+function getClass(
+  layer: number,
+  row: number,
+  column: number,
+  block: string,
+): string {
+  return `cube-layer-${layer}-row-${row + 1}-column-${column}-${block}`;
+}
 ---
 
-<div></div>
+<div class:list={['cube', block]}>
+  <input type='radio' name={name} id={id} checked={selectedBlock === block} />
+  {
+    directions.map((direction) => (
+      <label for={getClass(layer, row, column, block)} class={direction} />
+    ))
+  }
+</div>
