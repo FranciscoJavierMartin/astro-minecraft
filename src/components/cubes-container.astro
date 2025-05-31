@@ -1,13 +1,32 @@
 ---
+import { blocks, layers } from '@/data';
+import Cube from '@/components/cube.astro';
 interface Props {
   layer: number;
   row: number;
   column: number;
+  originalBlock: string;
 }
 
-const { layer, row, column } = Astro.props;
+const { layer, row, column, originalBlock } = Astro.props;
+
+const selectedBlock: string = layer === layers - 1 ? 'grass' : 'air';
+const name = `cube-layer-${layer}-row-${row}-column-${column}`;
+const id = `${name}-${originalBlock}`;
+const directions = ['front', 'back', 'left', 'right', 'top', 'bottom'];
 ---
 
-<h1>
-  Hello
-</h1>
+<div class='cubes-container'>
+  <div class:list={['cube', originalBlock]}>
+    <input
+      type='radio'
+      name={name}
+      id={id}
+      checked={selectedBlock === originalBlock}
+    />
+    {directions.map((direction) => <label for={id} class={direction} />)}
+  </div>
+  {blocks.slice(1).map((block, index) => <Cube block={block} index={index} />)}
+</div>
+
+<style define:vars={{ layer, row, column }}></style>
