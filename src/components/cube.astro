@@ -6,15 +6,13 @@ interface Props {
   row: number;
   column: number;
   block: string;
-  index: number;
   name: string;
   selectedBlock: string;
 }
 
-const { block, index, name, selectedBlock, layer, row, column } = Astro.props;
+const { block, name, selectedBlock, layer, row, column } = Astro.props;
 
 const id: string = `${name}-block`;
-const checked: boolean = index === 0;
 
 function getClass(
   layer: number,

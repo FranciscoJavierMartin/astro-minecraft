@@ -1,3 +1,35 @@
-h1 {
-  
+:root {
+  color-scheme: dark;
+  --cube-size: 5rem;
+  --camera-distance: 50rem;
+
+  --air-image: none;
+  --pickaxe-image: url('../assets/pickaxe.png');
+  --stone-image: url('../assets/stone.png');
+  --grass-image: url('../assets/grass_side_carried.png');
+  --grass-top-image: url('../assets/grass_carried.png');
+  --dirt-image: url('../assets/dirt.png');
+  --log-image: url('../assets/log_oak.png');
+  --wood-image: url('../assets/oak_planks.png');
+  --log-top-image: url('../assets/log_oak_top.png');
+  --leaves-image: url('../assets/azalea_leaves.png');
+  --glass-image: url('../assets/glass.png');
+  pointer-events: none;
+}
+
+body {
+  color: white;
+  background-color: lightskyblue;
+  block-size: 100dvh;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  display: grid;
+  place-content: center center;
+}
+
+label,
+button {
+  cursor: pointer;
 }
