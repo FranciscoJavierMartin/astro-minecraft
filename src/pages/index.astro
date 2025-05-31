@@ -1,5 +1,6 @@
 ---
 import CubesContainer from '@/components/cubes-container.astro';
+import MoveButtonPair from '@/components/move-button-pair.astro';
 import '@/styles/icons.css';
 import '@/styles/main.css';
 
@@ -69,34 +70,34 @@ const columns = 9;
       </div>
 
       <div class='move-buttons'>
-        <div class='move-button-pair'>
-          <span class='label'>Vertical</span>
-          <button class='up icon:arrow-circle-up' title='Move upwards'></button>
-          <button class='down icon:arrow-circle-down' title='Move downwards'
-          ></button>
-        </div>
-        <div class='move-button-pair'>
-          <span>Horizontal</span>
-          <button class='forwards icon:arrow-upward' title='Move forwards'
-          ></button>
-          <button class='backwards icon:arrow-downward' title='Move backwards'
-          ></button>
-        </div>
-        <div class='move-button-pair'>
-          <span>Rotation</span>
-          <button class='clockwise icon:rotate-right' title='Rotate clockwise'
-          ></button>
-          <button
-            class='counterclockwise icon:rotate-left'
-            title='Rotate counterclockwise'></button>
-        </div>
-        <div class='move-button-pair'>
-          <span>View</span>
-          <button class='look-up icon:keyboard-arrow-up' title='Look up'
-          ></button>
-          <button class='look-down icon:keyboard-arrow-down' title='Look down'
-          ></button>
-        </div>
+        <MoveButtonPair
+          title='Vertical'
+          firstButtonClass='up icon:arrow-circle-up'
+          firstButtonTitle='Move upwards'
+          secondButtonClass='down icon:arrow-circle-down'
+          secondButtonTitle='Move downwards'
+        />
+        <MoveButtonPair
+          title='Horizontal'
+          firstButtonClass='forwards icon:arrow-upward'
+          firstButtonTitle='Move forwards'
+          secondButtonClass='backwards icon:arrow-downward'
+          secondButtonTitle='Move backwards'
+        />
+        <MoveButtonPair
+          title='Rotation'
+          firstButtonClass='clockwise icon:rotate-right'
+          firstButtonTitle='Rotate clockwise'
+          secondButtonClass='counterclockwise icon:rotate-left'
+          secondButtonTitle='Rotate counterclockwise'
+        />
+        <MoveButtonPair
+          title='View'
+          firstButtonClass='look-up icon:keyboard-arrow-up'
+          firstButtonTitle='Look up'
+          secondButtonClass='look-down icon:keyboard-arrow-down'
+          secondButtonTitle='Look down'
+        />
       </div>
     </section>
     <main>

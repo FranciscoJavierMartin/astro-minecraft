@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  firstButtonClass: string;
+  secondButtonClass: string;
+  firstButtonTitle: string;
+  secondButtonTitle: string;
+}
+
+const {
+  title,
+  firstButtonClass,
+  firstButtonTitle,
+  secondButtonClass,
+  secondButtonTitle,
+} = Astro.props;
+---
+
+<div class='move-button-pair'>
+  <span class='label'>{title}</span>
+  <button class={firstButtonClass} title={firstButtonTitle}></button>
+  <button class={secondButtonClass} title={secondButtonTitle}></button>
+</div>
