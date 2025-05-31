@@ -1,4 +1,8 @@
 ---
+import CubesContainer from '@/components/cubes-container.astro';
+import '@/styles/icons.css';
+import '@/styles/main.css';
+
 const blocks = [
   'air',
   'stone',
@@ -12,8 +16,6 @@ const blocks = [
 const layers = 9;
 const rows = 9;
 const columns = 9;
-import '@/styles/icons.css';
-import '@/styles/main.css';
 ---
 
 <html lang='en'>
@@ -97,6 +99,45 @@ import '@/styles/main.css';
         </div>
       </div>
     </section>
+    <main>
+      <div class='content'>
+        <div class='look-up'>
+          <div class='look-down'>
+            <div class='initial-camera-position'>
+              <div class='up'>
+                <div class='down'>
+                  <div class='forwards'>
+                    <div class='backwards'>
+                      <div class='clockwise'>
+                        <div class='counterclockwise'>
+                          <div class='blocks'>
+                            {
+                              Array.from({ length: layers }).map((_, layer) =>
+                                Array.from({ length: rows }).map((_, row) =>
+                                  Array.from({ length: columns }).map(
+                                    (_, column) => (
+                                      <CubesContainer
+                                        layer={layer}
+                                        row={row}
+                                        column={column}
+                                      />
+                                    ),
+                                  ),
+                                ),
+                              )
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
 
