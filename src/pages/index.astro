@@ -12,6 +12,7 @@ const blocks = [
 const layers = 9;
 const rows = 9;
 const columns = 9;
+import '@/styles/icons.css';
 import '@/styles/main.css';
 ---
 
@@ -25,7 +26,77 @@ import '@/styles/main.css';
     <title>Astro Minecraft</title>
   </head>
   <body>
-    <h1>Astro {Astro.generator}</h1>
+    <!-- Info -->
+    <section class='info'>
+      <div class='text'>
+        <h1>Astro Minecraft</h1>
+        <p>
+          | <strong>There is no JavaScript on this page.</strong> All the logic is
+          made 100% with pure HTML & CSS. For the best performance, please close
+          other tabs and running programs.<br />
+        </p>
+        <p class='not-supported'>
+          | ⚠︎ Your browser does not support the <a
+            href='https://developer.mozilla.org/en-US/docs/Web/CSS/:has'
+            >CSS <code>:has()</code> pseudo-class</a
+          >, which is needed for this site to work. | Please update it: Chromium
+          version ≥ 105, Safari version ≥ 15.4 or Firefox version ≥ 121 is
+          required.
+        </p>
+      </div>
+      <label class='close' title='close'>
+        <input type='checkbox' />
+      </label>
+    </section>
+
+    <!-- Controls -->
+    <section class='controls'>
+      <div class='block-chooser'>
+        <span class='label'>Block type</span>
+        {
+          blocks.map((block) => (
+            <label class={block} title={block}>
+              <input
+                type='radio'
+                name='block-type'
+                checked={block === 'stone' ? 'checked' : ''}
+              />
+            </label>
+          ))
+        }
+      </div>
+
+      <div class='move-buttons'>
+        <div class='move-button-pair'>
+          <span class='label'>Vertical</span>
+          <button class='up icon:arrow-circle-up' title='Move upwards'></button>
+          <button class='down icon:arrow-circle-down' title='Move downwards'
+          ></button>
+        </div>
+        <div class='move-button-pair'>
+          <span>Horizontal</span>
+          <button class='forwards icon:arrow-upward' title='Move forwards'
+          ></button>
+          <button class='backwards icon:arrow-downward' title='Move backwards'
+          ></button>
+        </div>
+        <div class='move-button-pair'>
+          <span>Rotation</span>
+          <button class='clockwise icon:rotate-right' title='Rotate clockwise'
+          ></button>
+          <button
+            class='counterclockwise icon:rotate-left'
+            title='Rotate counterclockwise'></button>
+        </div>
+        <div class='move-button-pair'>
+          <span>View</span>
+          <button class='look-up icon:keyboard-arrow-up' title='Look up'
+          ></button>
+          <button class='look-down icon:keyboard-arrow-down' title='Look down'
+          ></button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
 
