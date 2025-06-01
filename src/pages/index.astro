@@ -20,7 +20,6 @@ import '@/styles/main.css';
     <Info />
     <!-- Controls -->
     <section class='controls'>
-      <h1>Hello world</h1>
       <div class='block-chooser'>
         <span class='label'>Block type</span>
         {
@@ -476,5 +475,24 @@ import '@/styles/main.css';
           calc(-0.5 * var(--rows) * var(--cube-size));
       }
     }
+  }
+
+  .cubes-container > .cube > label:hover,
+  .controls:has(.air > input[type='radio']:checked)
+    ~ main
+    .cubes-container:hover
+    > .cube
+    > label {
+    --outline-width: calc(var(-cube-size) / 24);
+    outline: var(--outline-width) solid white;
+    outline-offset: calc(-1 * var(--outline-width));
+  }
+
+  .controls:has(.air > input[type='radio']:checked)
+    ~ main
+    .cubes-container:hover
+    > .cube
+    > label {
+    filter: brightness(70%);
   }
 </style>
