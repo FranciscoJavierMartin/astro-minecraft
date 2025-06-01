@@ -78,5 +78,21 @@ const id = `${name}-${originalBlock}`;
     &:has(& > .cube.glass > input[type='radio']:checked) {
       --background-image: var(--glass-image);
     }
+
+    &:has(& > .cube.grass > input[type='radio']:checked) > .cube > label {
+      &.top {
+        background-image: var(--grass-top-image);
+      }
+
+      &.bottom {
+        background-image: var(--dirt-image);
+      }
+    }
+
+    &:has(& > .cube.log > input[type='radio']:checked) > .cube > label {
+      &:is(.top, bottom) {
+        background-image: var(--log-top-image);
+      }
+    }
   }
 </style>
