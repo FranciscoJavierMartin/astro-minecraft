@@ -41,4 +41,42 @@ const id = `${name}-${originalBlock}`;
   }
 </div>
 
-<style define:vars={{ layer, row, column }}></style>
+<style define:vars={{ layer, row, column }}>
+  .cubes-container {
+    pointer-events: auto;
+    translate: calc(var(--column) * var(--cube-size))
+      calc(var(--layer) * var(--cube-size)) calc(var(--row) * var(--cube-size));
+
+    &:has(& > .cube.air > input[type='radio']:checked) {
+      display: none;
+    }
+
+    &:has(& > .cube.stone > input[type='radio']:checked) {
+      --background-image: var(--stone-image);
+    }
+
+    &:has(& > .cube.grass > input[type='radio']:checked) {
+      --background-image: var(--grass-image);
+    }
+
+    &:has(& > .cube.dirt > input[type='radio']:checked) {
+      --background-image: var(--dirt-image);
+    }
+
+    &:has(& > .cube.log > input[type='radio']:checked) {
+      --background-image: var(--log-image);
+    }
+
+    &:has(& > .cube.wood > input[type='radio']:checked) {
+      --background-image: var(--wood-image);
+    }
+
+    &:has(& > .cube.leaves > input[type='radio']:checked) {
+      --background-image: var(--leaves-image);
+    }
+
+    &:has(& > .cube.glass > input[type='radio']:checked) {
+      --background-image: var(--glass-image);
+    }
+  }
+</style>
