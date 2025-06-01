@@ -32,3 +32,58 @@ function getClass(
     ))
   }
 </div>
+
+<style>
+  .cube {
+    position: absolute;
+    block-size: var(--cube-size);
+    inline-size: var(--cube-size);
+
+    > input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    > label {
+      position: absolute;
+      inset: 0;
+      background-color: var(--background-image);
+      image-rendering: pixelated;
+      background-size: 100% 100%;
+      transform-origin: center center calc(-1 * var(--cube-size) / 2);
+      translate: 0 0 calc(var(--cube-size) / 2);
+      box-sizing: border-box;
+
+      &.front {
+        rotate: y 0grad;
+        filter: brightness(92%);
+      }
+
+      &.back {
+        rotate: y 200grad;
+        filter: brightness(68%);
+      }
+
+      &.left {
+        rotate: y 100grad;
+        filter: brightness(76%);
+      }
+
+      &.right {
+        rotate: y -100grad;
+        filter: brightness(84%);
+      }
+
+      &.top {
+        rotate: x 100grad;
+        filter: brightness(100%);
+      }
+
+      &.bottom {
+        rotate: x -100grad;
+        filter: brightness(60%);
+      }
+    }
+  }
+</style>
