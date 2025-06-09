@@ -1,0 +1,92 @@
+---
+
+---
+
+<style>
+  .info {
+    pointer-events: auto;
+    z-index: 1;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    padding: 0.75rem;
+    margin-inline: auto;
+    inline-size: fit-content;
+    max-inline-size: min(60rem, 100vw - 10rem);
+    background-color: rgba(17, 17, 17, 0.4666666667);
+    --backdrop-filter: blur(0.4rem);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
+    border-radius: 0.6rem;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    text-align: center;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    strong {
+      color: gold;
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .close {
+      padding-inline: 0.3rem;
+
+      &::before {
+        content: '⨉';
+        font-size: 1.5rem;
+      }
+
+      > input[type='checkbox'] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:has(.close > input[type='checkbox']:checked) {
+      display: none;
+    }
+
+    .not-supported {
+      border: 2px solid red;
+      background-color: rgba(255, 0, 0, 0.2666666667);
+      border-radius: 0.7rem;
+      padding: 0.6rem 0.4rem;
+    }
+  }
+
+  @supports selector(:has(a)) {
+    .info .not-supported {
+      display: none;
+    }
+  }
+</style>
+
+<section class="info">
+  <div class="text">
+    <h1>Astro Minecraft</h1>
+    <p>
+      | <strong>There is no JavaScript on this page.</strong> All the logic is made
+      100% with pure HTML & CSS. For the best performance, please close other tabs
+      and running programs.<br />
+    </p>
+    <p class="not-supported">
+      | ⚠︎ Your browser does not support the <a
+        href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"
+        >CSS <code>:has()</code> pseudo-class</a
+      >, which is needed for this site to work. | Please update it: Chromium
+      version ≥ 105, Safari version ≥ 15.4 or Firefox version ≥ 121 is required.
+    </p>
+  </div>
+  <label class="close" title="close">
+    <input type="checkbox" />
+  </label>
+</section>

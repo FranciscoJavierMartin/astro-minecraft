@@ -2,6 +2,7 @@
 import { layers, blocks, columns, rows } from '@/data';
 import '@/styles/icons.css';
 import '@/styles/main.css';
+import Info from '@/components/info.astro';
 ---
 
 <html lang="en">
@@ -30,8 +31,20 @@ import '@/styles/main.css';
     <link rel="preload" as="image" href="../assets/stone.png" /> -->
   </head>
   <body>
-    <h1>Astro {layers}</h1>
+    <Info />
   </body>
 </html>
 
-<style define:vars={{ layers, columns, rows }}></style>
+<style define:vars={{ layers, columns, rows }}>
+  body {
+    color: white;
+    background-color: lightskyblue;
+    block-size: 100dvb;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+    overflow: hidden;
+    display: grid;
+    place-content: center center;
+  }
+</style>
