@@ -1,23 +1,37 @@
 ---
-
+import { layers, blocks, columns, rows } from '@/data';
+import '@/styles/icons.css';
+import '@/styles/main.css';
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A Minecraft clone made with pure HTML & CSS - no JavaScript."
+    />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Astro Minecraft</title>
+
+    <link rel="icon" href="../assets/icon.png" />
+
+    <!-- <link rel="stylesheet" href="../styles/icons.css" /> -->
+    <!-- <link rel="stylesheet" href="../styles/main.css" /> -->
+
+    <!-- <link rel="preload" as="image" href="../assets/azalea_leaves.png" />
+    <link rel="preload" as="image" href="../assets/dirt.png" />
+    <link rel="preload" as="image" href="../assets/glass.png" />
+    <link rel="preload" as="image" href="../assets/grass_carried.png" />
+    <link rel="preload" as="image" href="../assets/grass_side_carried.png" />
+    <link rel="preload" as="image" href="../assets/log_oak.png" />
+    <link rel="preload" as="image" href="../assets/pickaxe.png" />
+    <link rel="preload" as="image" href="../assets/stone.png" /> -->
   </head>
   <body>
-    <h1>Astro</h1>
+    <h1>Astro {layers}</h1>
   </body>
 </html>
 
-<style>
-  body {
-    background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
-  }
-</style>
+<style define:vars={{ layers, columns, rows }}></style>
