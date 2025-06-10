@@ -3,6 +3,12 @@ import { layers, blocks, columns, rows } from '@/data';
 import '@/styles/icons.css';
 import '@/styles/main.css';
 import Info from '@/components/info.astro';
+import Controls from '@/components/controls.astro';
+import Stone from '@/assets/stone.png';
+
+import { getImage, Image } from 'astro:assets';
+
+const stoneImage = await getImage({ src: Stone });
 ---
 
 <html lang="en">
@@ -32,10 +38,20 @@ import Info from '@/components/info.astro';
   </head>
   <body>
     <Info />
+    <Controls />
+    <!-- <img src={stoneImage.src}/> -->
+    <Image src={stoneImage.src} alt="Hello" height={100} width={100} />
   </body>
 </html>
 
-<style define:vars={{ layers, columns, rows }}>
+<style
+  define:vars={{
+    layers,
+    columns,
+    rows,
+    'stone-image': `url(${stoneImage.src})`,
+  }}
+>
   body {
     color: white;
     background-color: lightskyblue;

@@ -4,7 +4,8 @@
   --camera-distance: 50rem;
   --air-image: none;
   --pickaxe-image: url('./assets/pickaxe.png');
-  --stone-image: url('./assets/stone.png');
+  /* --stone-image: url('./assets/stone.png'); */
+  /* --stone-image: url('/astro-minecraft/assets/stone.png'); */
   --grass-image: url('./assets/grass_side_carried.png');
   --grass-top-image: url('./assets/grass_carried.png');
   --dirt-image: url('./assets/dirt.png');

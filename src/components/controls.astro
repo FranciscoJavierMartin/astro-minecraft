@@ -1,0 +1,114 @@
+---
+import { blocks } from '@/data';
+---
+
+<style>
+  .controls {
+    pointer-events: auto;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4);
+    background-color: rgba(34, 34, 34, 0.5333333333);
+    --backdrop-filter: blur(0.3rem);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
+    padding: 0.75rem;
+    padding-block-start: 0.5rem;
+    margin-block-end: 0.75rem;
+    inset-block-end: 0;
+    inset-inline: 0;
+    margin-inline: auto;
+    inline-size: fit-content;
+    max-inline-size: calc(100vw - 4rem);
+
+    .block-chooser {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      > label {
+        display: block;
+        inline-size: 3rem;
+        block-size: 3rem;
+        border-radius: 0.3rem;
+        box-sizing: border-box;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        image-rendering: pixelated;
+        outline-offset: 1px;
+
+        &.air {
+          background-image: var(--air-image);
+        }
+
+        &.stone {
+          background-image: var(--stone-image);
+        }
+
+        &:hover {
+          outline: 2px solid silver;
+        }
+
+        &:has(> input[type='radio']:checked) {
+          outline: 2px solid white;
+        }
+
+        > input[type='radio'] {
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .move-buttons {
+    }
+  }
+</style>
+
+<section class="controls">
+  <div class="block-chooser">
+    <span>Block type</span>
+    {
+      blocks.map((block) => (
+        <label class={block} title={block}>
+          <input type="radio" name="block-type" checked={block === 'stone'} />
+        </label>
+      ))
+    }
+  </div>
+  <div class="move-buttons">
+    <div class="move-button-pair">
+      <span class="label">Vertical</span>
+      <button class="up icon:arrow-circle-up" title="Move upwards"></button>
+      <button class="down icon:arrow-circle-down" title="Move downwards"
+      ></button>
+    </div>
+    <div class="move-button-pair">
+      <span class="label">Horizontal</span>
+      <button class="forwards icon:arrow-upward" title="Move forwards"></button>
+      <button class="backwards icon:arrow-downward" title="Move backwards"
+      ></button>
+    </div>
+    <div class="move-button-pair">
+      <span class="label">Rotation</span>
+      <button class="clockwise icon:rotate-right" title="Rotate clockwise"
+      ></button>
+      <button
+        class="counterclockwise icon:rotate-left"
+        title="Rotate counterclockwise"></button>
+    </div>
+    <div class="move-button-pair">
+      <span class="label">View</span>
+      <button class="look-up icon:keyboard-arrow-up" title="Look up"></button>
+      <button class="look-down icon:keyboard-arrow-down" title="Look down"
+      ></button>
+    </div>
+  </div>
+</section>
