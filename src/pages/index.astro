@@ -1,14 +1,31 @@
 ---
+import { getImage } from 'astro:assets';
 import { layers, blocks, columns, rows } from '@/data';
 import '@/styles/icons.css';
 import '@/styles/main.css';
 import Info from '@/components/info.astro';
 import Controls from '@/components/controls.astro';
 import Stone from '@/assets/stone.png';
-
-import { getImage, Image } from 'astro:assets';
+import Pickaxe from '@/assets/pickaxe.png';
+import Grass from '@/assets/grass_side_carried.png';
+import GrassTop from '@/assets/grass_carried.png';
+import Dirt from '@/assets/dirt.png';
+import Log from '@/assets/log_oak.png';
+import Wood from '@/assets/oak_planks.png';
+import LogTop from '@/assets/log_oak_top.png';
+import Glass from '@/assets/glass.png';
+import Leaves from '@/assets/azalea_leaves.png';
 
 const stoneImage = await getImage({ src: Stone });
+const pickaxeImage = await getImage({ src: Pickaxe });
+const grassImage = await getImage({ src: Grass });
+const grassTopImage = await getImage({ src: GrassTop });
+const dirtImage = await getImage({ src: Dirt });
+const logImage = await getImage({ src: Log });
+const woodImage = await getImage({ src: Wood });
+const logTopImage = await getImage({ src: LogTop });
+const glassImage = await getImage({ src: Glass });
+const leavesImage = await getImage({ src: Leaves });
 ---
 
 <html lang="en">
@@ -23,24 +40,10 @@ const stoneImage = await getImage({ src: Stone });
     <title>Astro Minecraft</title>
 
     <link rel="icon" href="../assets/icon.png" />
-
-    <!-- <link rel="stylesheet" href="../styles/icons.css" /> -->
-    <!-- <link rel="stylesheet" href="../styles/main.css" /> -->
-
-    <!-- <link rel="preload" as="image" href="../assets/azalea_leaves.png" />
-    <link rel="preload" as="image" href="../assets/dirt.png" />
-    <link rel="preload" as="image" href="../assets/glass.png" />
-    <link rel="preload" as="image" href="../assets/grass_carried.png" />
-    <link rel="preload" as="image" href="../assets/grass_side_carried.png" />
-    <link rel="preload" as="image" href="../assets/log_oak.png" />
-    <link rel="preload" as="image" href="../assets/pickaxe.png" />
-    <link rel="preload" as="image" href="../assets/stone.png" /> -->
   </head>
   <body>
     <Info />
     <Controls />
-    <!-- <img src={stoneImage.src}/> -->
-    <Image src={stoneImage.src} alt="Hello" height={100} width={100} />
   </body>
 </html>
 
@@ -50,6 +53,15 @@ const stoneImage = await getImage({ src: Stone });
     columns,
     rows,
     'stone-image': `url(${stoneImage.src})`,
+    'grass-image': `url(${grassImage.src})`,
+    'dirt-image': `url(${dirtImage.src})`,
+    'log-image': `url(${logImage.src})`,
+    'wood-image': `url(${woodImage.src})`,
+    'leaves-image': `url(${leavesImage.src})`,
+    'glass-image': `url(${glassImage.src})`,
+    'pickaxe-image': `url(${pickaxeImage.src})`,
+    'grass-top-image': `url(${grassTopImage.src})`,
+    'log-top-image': `url(${logTopImage.src})`,
   }}
 >
   body {
