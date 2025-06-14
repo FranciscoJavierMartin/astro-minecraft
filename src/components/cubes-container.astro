@@ -1,0 +1,33 @@
+---
+import { blocks, layers } from '@/data';
+
+interface Props {
+  layer: number;
+  row: number;
+  column: number;
+}
+
+const { layer, row, column } = Astro.props;
+const selectedBlock = layer === layers - 1 ? 'grass' : 'air';
+const name = `cube-layer-${layer}-row-${row}-column-${column}`;
+const id = `${name}-${blocks[0]}`;
+---
+
+<style define:vars={{ layer, row, column }}></style>
+
+<div class="cubes-container">
+  <div class:list={['cube', blocks[0]]}>
+    <input
+      type="radio"
+      name={name}
+      id={id}
+      checked={selectedBlock === blocks[0]}
+    />
+    <label for={id} class="front"></label>
+    <label for={id} class="back"></label>
+    <label for={id} class="left"></label>
+    <label for={id} class="right"></label>
+    <label for={id} class="top"></label>
+    <label for={id} class="bottom"></label>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+---
+import { columns, layers, rows } from '@/data';
+import CubesContainer from '@/components/cubes-container.astro'
+---
+
+<main>
+  <div class="content">
+    <div class="look-up">
+      <div class="look-down">
+        <div class="initial-camera-position">
+          <div class="up">
+            <div class="down">
+              <div class="forwards">
+                <div class="backwards">
+                  <div class="clockwise">
+                    <div class="counterclockwise">
+                      <div class="blocks">
+                        {
+                          Array.from({ length: layers }).map((_, layer) =>
+                            Array.from({ length: rows }).map((_, row) =>
+                              Array.from({ length: columns }).map(
+                                (_, column) => <CubesContainer ori layer={layer} row={row} column={column} />,
+                              ),
+                            ),
+                          )
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -15,6 +15,7 @@ import Wood from '@/assets/oak_planks.png';
 import LogTop from '@/assets/log_oak_top.png';
 import Glass from '@/assets/glass.png';
 import Leaves from '@/assets/azalea_leaves.png';
+import Content from '@/components/content.astro';
 
 const stoneImage = await getImage({ src: Stone });
 const pickaxeImage = await getImage({ src: Pickaxe });
@@ -44,6 +45,7 @@ const leavesImage = await getImage({ src: Leaves });
   <body>
     <Info />
     <Controls />
+    <Content />
   </body>
 </html>
 
