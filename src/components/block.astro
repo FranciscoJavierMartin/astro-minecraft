@@ -4,15 +4,13 @@ interface Props {
   row: number;
   column: number;
   block: string;
-  index: number;
   name: string;
   selectedBlock: string;
 }
 
-const { layer, row, column, block, index, name, selectedBlock } = Astro.props;
+const { layer, row, column, block, name, selectedBlock } = Astro.props;
 
 const id = `${name}-${block}`;
-const checked = index === 0;
 ---
 
 <div class:list={['cube', block]}>

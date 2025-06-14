@@ -1,33 +1,25 @@
 :root {
   color-scheme: dark;
+
   --cube-size: 5rem;
   --camera-distance: 50rem;
   --air-image: none;
+
   pointer-events: none;
 }
 
-body {
-  color: white;
-  background-color: lightSkyBlue;
-  block-size: 100vh;
-  block-size: 100dvb;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
-  overflow: hidden;
-  display: grid;
-  place-content: center center;
-}
-
-label, button {
+label,
+button {
   cursor: pointer;
 }
 
-h1, p {
+h1,
+p {
   margin: 0;
 }
 
-h1, strong {
+h1,
+strong {
   font-weight: 600;
 }
 
@@ -45,48 +37,58 @@ a {
   margin-inline: auto;
   inline-size: fit-content;
   max-inline-size: min(60rem, 100vw - 10rem);
-  background-color: rgba(17, 17, 17, 0.4666666667);
-  --backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: var(--backdrop-filter);
+  background-color: rgb(17 17 17 / 46.7%);
+
+  --backdrop-filter: blur(0.4rem);
+
+  backdrop-filter: var(--backdrop-filter);
   backdrop-filter: var(--backdrop-filter);
   border-radius: 0.6rem;
   border-start-start-radius: 0;
   border-start-end-radius: 0;
   text-align: center;
-  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 1.5rem rgb(0 0 0 / 40%);
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
 .info strong {
   color: gold;
 }
+
 .info .text {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
+
 .info .close {
   padding-inline: 0.3rem;
 }
+
 .info .close::before {
-  content: "⨉";
+  content: '⨉';
   font-size: 1.5rem;
 }
-.info .close > input[type=checkbox] {
+
+.info .close > input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-.info:has(.close > input[type=checkbox]:checked) {
+
+.info:has(.close > input[type='checkbox']:checked) {
   display: none;
 }
+
 .info .not-supported {
   border: 2px solid red;
-  background-color: rgba(255, 0, 0, 0.2666666667);
+  background-color: rgb(255 0 0 / 26.7%);
   border-radius: 0.7rem;
   padding: 0.6rem 0.4rem;
 }
+
 @supports selector(:has(a)) {
   .info .not-supported {
     display: none;
@@ -103,10 +105,12 @@ a {
   align-items: center;
   gap: 1.25rem;
   border-radius: 0.8rem;
-  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4);
-  background-color: rgba(34, 34, 34, 0.5333333333);
-  --backdrop-filter: blur(.3rem);
-  -webkit-backdrop-filter: var(--backdrop-filter);
+  box-shadow: 0 0 1.5rem rgb(0 0 0 / 40%);
+  background-color: rgb(34 34 34 / 53.3%);
+
+  --backdrop-filter: blur(0.3rem);
+
+  backdrop-filter: var(--backdrop-filter);
   backdrop-filter: var(--backdrop-filter);
   padding: 0.75rem;
   padding-block-start: 0.5rem;
@@ -117,11 +121,13 @@ a {
   inline-size: fit-content;
   max-inline-size: calc(100vw - 4rem);
 }
+
 .controls .block-chooser {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
 .controls .block-chooser > label {
   display: block;
   inline-size: 3rem;
@@ -133,88 +139,141 @@ a {
   image-rendering: pixelated;
   outline-offset: 1px;
 }
+
 .controls .block-chooser > label.air {
   background-image: var(--air-image);
 }
+
 .controls .block-chooser > label.stone {
   background-image: var(--stone-image);
 }
+
 .controls .block-chooser > label.grass {
   background-image: var(--grass-image);
 }
+
 .controls .block-chooser > label.dirt {
   background-image: var(--dirt-image);
 }
+
 .controls .block-chooser > label.log {
   background-image: var(--log-image);
 }
+
 .controls .block-chooser > label.wood {
   background-image: var(--wood-image);
 }
+
 .controls .block-chooser > label.leaves {
   background-image: var(--leaves-image);
 }
+
 .controls .block-chooser > label.glass {
   background-image: var(--glass-image);
 }
+
 .controls .block-chooser > label.air {
   background-image: var(--pickaxe-image);
 }
+
 .controls .block-chooser > label:hover {
   outline: 2px solid silver;
 }
-.controls .block-chooser > label:has(> input[type=radio]:checked) {
+
+.controls .block-chooser > label:has(> input[type='radio']:checked) {
   outline: 2px solid white;
 }
-.controls .block-chooser > label > input[type=radio] {
+
+.controls .block-chooser > label > input[type='radio'] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-.controls:has(> .block-chooser > .air > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.air) {
+
+.controls:has(> .block-chooser > .air > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.air) {
   display: none;
 }
-.controls:has(> .block-chooser > .stone > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.stone) {
+
+.controls:has(> .block-chooser > .stone > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.stone) {
   display: none;
 }
-.controls:has(> .block-chooser > .grass > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.grass) {
+
+.controls:has(> .block-chooser > .grass > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.grass) {
   display: none;
 }
-.controls:has(> .block-chooser > .dirt > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.dirt) {
+
+.controls:has(> .block-chooser > .dirt > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.dirt) {
   display: none;
 }
-.controls:has(> .block-chooser > .log > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.log) {
+
+.controls:has(> .block-chooser > .log > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.log) {
   display: none;
 }
-.controls:has(> .block-chooser > .wood > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.wood) {
+
+.controls:has(> .block-chooser > .wood > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.wood) {
   display: none;
 }
-.controls:has(> .block-chooser > .leaves > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.leaves) {
+
+.controls:has(> .block-chooser > .leaves > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.leaves) {
   display: none;
 }
-.controls:has(> .block-chooser > .glass > input[type=radio]:checked) ~ main .cubes-container > .cube:not(.glass) {
+
+.controls:has(> .block-chooser > .glass > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.glass) {
   display: none;
 }
-.controls .block-chooser, .controls .move-button-pair {
+
+.controls .block-chooser,
+.controls .move-button-pair {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
   justify-items: center;
   gap: 0.5rem;
 }
-.controls .block-chooser > *:not(.label), .controls .move-button-pair > *:not(.label) {
+
+.controls .block-chooser > *:not(.label),
+.controls .move-button-pair > *:not(.label) {
   grid-row: 2;
 }
-.controls .block-chooser > .label, .controls .move-button-pair > .label {
-  grid-column: 1/span 2;
+
+.controls .block-chooser > .label,
+.controls .move-button-pair > .label {
+  grid-column: 1 / span 2;
 }
+
 .controls .block-chooser > .label {
   grid-column-end: span 8;
 }
+
 .controls .move-buttons {
   display: flex;
   align-items: center;
   gap: 1.25rem;
 }
+
 .controls .move-buttons button {
   display: grid;
   place-content: center;
@@ -222,36 +281,46 @@ a {
   block-size: 3rem;
   border: none;
   border-radius: 0.3rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgb(0 0 0 / 20%);
   font-size: 1.5rem;
 }
+
 .controls .move-buttons button:hover {
-  background-color: rgba(0, 0, 0, 0.3333333333);
+  background-color: rgb(0 0 0 / 33.3%);
 }
+
 .controls .move-buttons button:active {
-  background-color: rgba(0, 0, 0, 0.4666666667);
+  background-color: rgb(0 0 0 / 46.7%);
 }
+
 .controls:has(.up:active) ~ main .down {
   animation-play-state: running;
 }
+
 .controls:has(.down:active) ~ main .up {
   animation-play-state: running;
 }
+
 .controls:has(.clockwise:active) ~ main .clockwise {
   animation-play-state: running;
 }
+
 .controls:has(.counterclockwise:active) ~ main .counterclockwise {
   animation-play-state: running;
 }
+
 .controls:has(.forwards:active) ~ main .backwards {
   animation-play-state: running;
 }
+
 .controls:has(.backwards:active) ~ main .forwards {
   animation-play-state: running;
 }
+
 .controls:has(.look-up:active) ~ main .look-up {
   animation-play-state: running;
 }
+
 .controls:has(.look-down:active) ~ main .look-down {
   animation-play-state: running;
 }
@@ -261,22 +330,27 @@ main {
   perspective-origin: center center;
 }
 
-main, main * {
+main,
+main * {
   transform-style: preserve-3d;
 }
 
 .content {
   rotate: x -50grad;
+
   --animation-duration: 10000s;
   --max-translation: 400000rem;
   --max-rotation: 3000turn;
 }
 
 .content .initial-camera-position {
-  translate: 0 calc(var(--layers) * var(--cube-size) * 0.4) calc(var(--camera-distance) - var(--rows) * var(--cube-size) * 0.9);
+  translate: 0 calc(var(--layers) * var(--cube-size) * 0.4)
+    calc(var(--camera-distance) - var(--rows) * var(--cube-size) * 0.9);
 }
 
-.content, .content .look-up, .content .look-down {
+.content,
+.content .look-up,
+.content .look-down {
   transform-origin: 0 0 var(--camera-distance);
 }
 
@@ -288,6 +362,7 @@ main, main * {
   from {
     rotate: x 0turn;
   }
+
   to {
     rotate: x calc(var(--max-rotation));
   }
@@ -301,6 +376,7 @@ main, main * {
   from {
     rotate: x 0turn;
   }
+
   to {
     rotate: x calc(-1 * var(--max-rotation));
   }
@@ -314,6 +390,7 @@ main, main * {
   from {
     translate: 0 0;
   }
+
   to {
     translate: 0 calc(var(--max-translation));
   }
@@ -327,6 +404,7 @@ main, main * {
   from {
     translate: 0 0;
   }
+
   to {
     translate: 0 calc(-1 * var(--max-translation));
   }
@@ -340,6 +418,7 @@ main, main * {
   from {
     translate: 0 0 0;
   }
+
   to {
     translate: 0 0 calc(-1 * var(--max-translation));
   }
@@ -353,6 +432,7 @@ main, main * {
   from {
     translate: 0 0 0;
   }
+
   to {
     translate: 0 0 calc(var(--max-translation));
   }
@@ -366,6 +446,7 @@ main, main * {
   from {
     rotate: y 0turn;
   }
+
   to {
     rotate: y calc(-1 * var(--max-rotation));
   }
@@ -379,6 +460,7 @@ main, main * {
   from {
     rotate: y 0turn;
   }
+
   to {
     rotate: y calc(var(--max-rotation));
   }
@@ -386,47 +468,68 @@ main, main * {
 
 .content .blocks {
   position: relative;
-  translate: calc(-0.5 * var(--columns) * var(--cube-size)) calc(-0.5 * var(--layers) * var(--cube-size)) calc(-0.5 * var(--rows) * var(--cube-size));
+  translate: calc(-0.5 * var(--columns) * var(--cube-size))
+    calc(-0.5 * var(--layers) * var(--cube-size))
+    calc(-0.5 * var(--rows) * var(--cube-size));
 }
 
 .content .blocks .cubes-container {
   pointer-events: auto;
-  translate: calc(var(--column) * var(--cube-size)) calc(var(--layer) * var(--cube-size)) calc(var(--row) * var(--cube-size));
+  translate: calc(var(--column) * var(--cube-size))
+    calc(var(--layer) * var(--cube-size)) calc(var(--row) * var(--cube-size));
 }
 
-.content .blocks .cubes-container:has(> .cube.air > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.air > input[type='radio']:checked) {
   display: none;
 }
 
-.content .blocks .cubes-container:has(> .cube.air > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.air > input[type='radio']:checked) {
   --background-image: var(--air-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.stone > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.stone > input[type='radio']:checked) {
   --background-image: var(--stone-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.grass > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.grass > input[type='radio']:checked) {
   --background-image: var(--grass-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.dirt > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.dirt > input[type='radio']:checked) {
   --background-image: var(--dirt-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.log > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.log > input[type='radio']:checked) {
   --background-image: var(--log-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.wood > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.wood > input[type='radio']:checked) {
   --background-image: var(--wood-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.leaves > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.leaves > input[type='radio']:checked) {
   --background-image: var(--leaves-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.glass > input[type=radio]:checked) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.glass > input[type='radio']:checked) {
   --background-image: var(--glass-image);
 }
 
@@ -436,7 +539,7 @@ main, main * {
   inline-size: var(--cube-size);
 }
 
-.content .blocks .cubes-container .cube > input[type=radio] {
+.content .blocks .cubes-container .cube > input[type='radio'] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -483,25 +586,46 @@ main, main * {
   filter: brightness(60%);
 }
 
-.content .blocks .cubes-container:has(> .cube.grass > input[type=radio]:checked) > .cube > label.top {
+.content
+  .blocks
+  .cubes-container:has(> .cube.grass > input[type='radio']:checked)
+  > .cube
+  > label.top {
   background-image: var(--grass-top-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.grass > input[type=radio]:checked) > .cube > label.bottom {
+.content
+  .blocks
+  .cubes-container:has(> .cube.grass > input[type='radio']:checked)
+  > .cube
+  > label.bottom {
   background-image: var(--dirt-image);
 }
 
-.content .blocks .cubes-container:has(> .cube.log > input[type=radio]:checked) > .cube > label:is(.top, bottom) {
+.content
+  .blocks
+  .cubes-container:has(> .cube.log > input[type='radio']:checked)
+  > .cube
+  > label:is(.top, bottom) {
   background-image: var(--log-top-image);
 }
 
 .cubes-container > .cube > label:hover,
-.controls:has(.air > input[type=radio]:checked) ~ main .cubes-container:hover > .cube > label {
+.controls:has(.air > input[type='radio']:checked)
+  ~ main
+  .cubes-container:hover
+  > .cube
+  > label {
   --outline-width: calc(var(--cube-size) / 24);
+
   outline: var(--outline-width) solid white;
   outline-offset: calc(-1 * var(--outline-width));
 }
 
-.controls:has(.air > input[type=radio]:checked) ~ main .cubes-container:hover > .cube > label {
+.controls:has(.air > input[type='radio']:checked)
+  ~ main
+  .cubes-container:hover
+  > .cube
+  > label {
   filter: brightness(70%);
 }
