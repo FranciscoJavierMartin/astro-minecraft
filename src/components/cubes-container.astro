@@ -1,5 +1,6 @@
 ---
 import { blocks, layers } from '@/data';
+import Block from '@/components/block.astro';
 
 interface Props {
   layer: number;
@@ -13,7 +14,116 @@ const name = `cube-layer-${layer}-row-${row}-column-${column}`;
 const id = `${name}-${blocks[0]}`;
 ---
 
-<style define:vars={{ layer, row, column }}></style>
+<style define:vars={{ layer, row, column }}>
+  .cubes-container {
+    pointer-events: auto;
+    translate: calc(var(--column) * var(--cube-size))
+      calc(var(--layer) * var(--cube-size)) calc(var(--row) * var(--cube-size));
+
+    /* &:has(> .cube.air > input[type='radio']:checked) {
+      display: none;
+    } */
+
+    &:has(> .cube.air > input[type='radio']:checked) {
+      --background-image: var(--air-image);
+    }
+
+    &:has(> .cube.stone > input[type='radio']:checked) {
+      --background-image: var(--stone-image);
+    }
+
+    &:has(> .cube.grass > input[type='radio']:checked) {
+      --background-image: var(--grass-image);
+    }
+
+    &:has(> .cube.dirt > input[type='radio']:checked) {
+      --background-image: var(--dirt-image);
+    }
+
+    &:has(> .cube.log > input[type='radio']:checked) {
+      --background-image: var(--log-image);
+    }
+
+    &:has(> .cube.wood > input[type='radio']:checked) {
+      --background-image: var(--wood-image);
+    }
+
+    &:has(> .cube.leaves > input[type='radio']:checked) {
+      --background-image: var(--leaves-image);
+    }
+
+    &:has(> .cube.glass > input[type='radio']:checked) {
+      --background-image: var(--glass-image);
+    }
+
+    .cube {
+      position: absolute;
+      block-size: var(--cube-size);
+      inline-size: var(--cube-size);
+
+      > input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      > label {
+        position: absolute;
+        inset: 0;
+        background-image: var(--background-image);
+        image-rendering: pixelated;
+        background-size: 100% 100%;
+        transform-origin: center center calc(-1 * var(--cube-size) / 2);
+        translate: 0 0 calc(var(--cube-size) / 2);
+        box-sizing: border-box;
+
+        &.front {
+          rotate: y 0grad;
+          filter: brightness(92%);
+        }
+
+        &.back {
+          rotate: y 200grad;
+          filter: brightness(68%);
+        }
+
+        &.left {
+          rotate: y 100grad;
+          filter: brightness(76%);
+        }
+
+        &.right {
+          rotate: y -100grad;
+          filter: brightness(84%);
+        }
+
+        &.top {
+          rotate: x 100grad;
+          filter: brightness(100%);
+        }
+
+        &.bottom {
+          rotate: x -100grad;
+          filter: brightness(60%);
+        }
+      }
+    }
+
+    &:has(> .cube.grass > input[type='radio']:checked) > .cube > label.top {
+      background-image: var(--grass-top-image);
+    }
+
+    &:has(> .cube.grass > input[type='radio']:checked) > .cube > label.bottom {
+      background-image: var(--dirt-image);
+    }
+
+    &:has(> .cube.log > input[type='radio']:checked)
+      > .cube
+      > label:is(.top, bottom) {
+      background-image: var(--log-top-image);
+    }
+  }
+</style>
 
 <div class="cubes-container">
   <div class:list={['cube', blocks[0]]}>
@@ -30,4 +140,19 @@ const id = `${name}-${blocks[0]}`;
     <label for={id} class="top"></label>
     <label for={id} class="bottom"></label>
   </div>
+  {
+    blocks
+      .slice(1)
+      .map((block, index) => (
+        <Block
+          layer={layer}
+          block={block}
+          row={row}
+          column={column}
+          index={index}
+          name={name}
+          selectedBlock={selectedBlock}
+        />
+      ))
+  }
 </div>

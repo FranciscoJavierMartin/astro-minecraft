@@ -25,6 +25,86 @@ a {
   color: inherit;
 }
 
+@keyframes look-up {
+  0% {
+    rotate: x 0turn;
+  }
+
+  100% {
+    rotate: x calc(var(--max-rotation));
+  }
+}
+
+@keyframes look-down {
+  from {
+    rotate: x 0turn;
+  }
+
+  to {
+    rotate: x calc(-1 * var(--max-rotation));
+  }
+}
+
+@keyframes move-down {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 calc(var(--max-translation));
+  }
+}
+
+@keyframes move-up {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 calc(-1 * var(--max-translation));
+  }
+}
+
+@keyframes move-forwards {
+  from {
+    translate: 0 0 0;
+  }
+
+  to {
+    translate: 0 0 calc(-1 * var(--max-translation));
+  }
+}
+
+@keyframes move-backwards {
+  from {
+    translate: 0 0 0;
+  }
+
+  to {
+    translate: 0 0 calc(var(--max-translation));
+  }
+}
+
+@keyframes rotate-clockwise {
+  from {
+    rotate: y 0turn;
+  }
+
+  to {
+    rotate: y calc(-1 * var(--max-rotation));
+  }
+}
+
+@keyframes rotate-counterclockwise {
+  from {
+    rotate: y 0turn;
+  }
+
+  to {
+    rotate: y calc(var(--max-rotation));
+  }
+}
+
 .controls:has(> .block-chooser > .air > input[type='radio']:checked)
   ~ main
   .cubes-container
@@ -111,4 +191,23 @@ a {
 
 .controls:has(.look-down:active) ~ main .look-down {
   animation-play-state: running;
+}
+
+.cubes-container > .cube > label:hover,
+.controls:has(.air > input[type='radio']:checked)
+  ~ main
+  .cubes-container:hover
+  > .cube
+  > label {
+  --outline-width: calc(var(--cube-size) / 24);
+  outline: var(--outline-width) solid white;
+  outline-offset: calc(-1 * var(--outline-width));
+}
+
+.controls:has(.air > input[type='radio']:checked)
+  ~ main
+  .cubes-container:hover
+  > .cube
+  > label {
+  filter: brightness(70%);
 }

@@ -1,7 +1,77 @@
 ---
 import { columns, layers, rows } from '@/data';
-import CubesContainer from '@/components/cubes-container.astro'
+import CubesContainer from '@/components/cubes-container.astro';
 ---
+
+<style>
+  main {
+    perspective: var(--camera-distance);
+    perspective-origin: center center;
+
+    &,
+    & * {
+      transform-style: preserve-3d;
+    }
+
+    .content {
+      rotate: x -50grad;
+      --animation-duration: 10000s;
+      --max-translation: 400000rem;
+      --max-rotation: 3000turn;
+
+      .initial-camera-position {
+        translate: 0 calc(var(--layers) * var(--cube-size) * 0.4)
+          calc(var(--camera-distance) - var(--rows) * var(--cube-size) * 0.9);
+      }
+
+      .look-up {
+        animation: var(--animation-duration) linear 1ms paused look-up;
+      }
+
+      .look-down {
+        animation: var(--animation-duration) linear 1ms paused look-down;
+      }
+
+      .down {
+        animation: var(--animation-duration) linear 1ms paused move-down;
+      }
+
+      .up {
+        animation: var(--animation-duration) linear 1ms paused move-up;
+      }
+
+      .forwards {
+        animation: var(--animation-duration) linear 1ms paused move-forwards;
+      }
+
+      .backwards {
+        animation: var(--animation-duration) linear 1ms paused move-backwards;
+      }
+
+      .clockwise {
+        animation: var(--animation-duration) linear 1ms paused rotate-clockwise;
+      }
+
+      .counterclockwise {
+        animation: var(--animation-duration) linear 1ms paused
+          rotate-counterclockwise;
+      }
+
+      .blocks {
+        position: relative;
+        translate: calc(-0.5 * var(--columns) * var(--cube-size))
+          calc(-0.5 * var(--layers) * var(--cube-size))
+          calc(-0.5 * var(--rows) * var(--cube-size));
+      }
+    }
+
+    .content,
+    .content .look-up,
+    .content .look-down {
+      transform-origin: 0 0 var(--camera-distance);
+    }
+  }
+</style>
 
 <main>
   <div class="content">
@@ -19,7 +89,13 @@ import CubesContainer from '@/components/cubes-container.astro'
                           Array.from({ length: layers }).map((_, layer) =>
                             Array.from({ length: rows }).map((_, row) =>
                               Array.from({ length: columns }).map(
-                                (_, column) => <CubesContainer ori layer={layer} row={row} column={column} />,
+                                (_, column) => (
+                                  <CubesContainer
+                                    layer={layer}
+                                    row={row}
+                                    column={column}
+                                  />
+                                ),
                               ),
                             ),
                           )

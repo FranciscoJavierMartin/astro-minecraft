@@ -1,0 +1,38 @@
+---
+interface Props {
+  layer: number;
+  row: number;
+  column: number;
+  block: string;
+  index: number;
+  name: string;
+  selectedBlock: string;
+}
+
+const { layer, row, column, block, index, name, selectedBlock } = Astro.props;
+
+const id = `${name}-${block}`;
+const checked = index === 0;
+---
+
+<div class:list={['cube', block]}>
+  <input type="radio" name={name} id={id} checked={selectedBlock === block} />
+  <label
+    for={`cube-layer-${layer}-row-${row + 1}-column-${column}-${block}`}
+    class="front"></label>
+  <label
+    for={`cube-layer-${layer}-row-${row - 1}-column-${column}-${block}`}
+    class="back"></label>
+  <label
+    for={`cube-layer-${layer}-row-${row}-column-${column + 1}-${block}`}
+    class="left"></label>
+  <label
+    for={`cube-layer-${layer}-row-${row}-column-${column - 1}-${block}`}
+    class="right"></label>
+  <label
+    for={`cube-layer-${layer - 1}-row-${row}-column-${column}-${block}`}
+    class="top"></label>
+  <label
+    for={`cube-layer-${layer + 1}-row-${row}-column-${column}-${block}`}
+    class="bottom"></label>
+</div>
