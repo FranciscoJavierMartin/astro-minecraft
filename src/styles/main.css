@@ -24,3 +24,91 @@ strong {
 a {
   color: inherit;
 }
+
+.controls:has(> .block-chooser > .air > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.air) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .stone > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.stone) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .grass > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.grass) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .dirt > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.dirt) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .log > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.log) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .wood > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.wood) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .leaves > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.leaves) {
+  display: none;
+}
+
+.controls:has(> .block-chooser > .glass > input[type='radio']:checked)
+  ~ main
+  .cubes-container
+  > .cube:not(.glass) {
+  display: none;
+}
+
+.controls:has(.up:active) ~ main .down {
+  animation-play-state: running;
+}
+
+.controls:has(.down:active) ~ main .up {
+  animation-play-state: running;
+}
+
+.controls:has(.clockwise:active) ~ main .clockwise {
+  animation-play-state: running;
+}
+
+.controls:has(.counterclockwise:active) ~ main .counterclockwise {
+  animation-play-state: running;
+}
+
+.controls:has(.forwards:active) ~ main .backwards {
+  animation-play-state: running;
+}
+
+.controls:has(.backwards:active) ~ main .forwards {
+  animation-play-state: running;
+}
+
+.controls:has(.look-up:active) ~ main .look-up {
+  animation-play-state: running;
+}
+
+.controls:has(.look-down:active) ~ main .look-down {
+  animation-play-state: running;
+}

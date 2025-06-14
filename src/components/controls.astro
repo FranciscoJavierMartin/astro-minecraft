@@ -89,16 +89,55 @@ import { blocks } from '@/data';
           pointer-events: none;
         }
       }
+
+      > .label {
+        grid-column-end: span 8;
+      }
     }
 
     .move-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+
+      button {
+        display: grid;
+        place-content: center;
+        inline-size: 3rem;
+        block-size: 3rem;
+        border: none;
+        border-radius: 0.3rem;
+        background-color: rgba(0, 0, 0, 0.2);
+        font-size: 1.5rem;
+
+        &:active,
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3333333333);
+        }
+      }
+    }
+
+    & .block-chooser,
+    & .move-button-pair {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+      justify-items: center;
+      gap: 0.5rem;
+
+      > *:not(.label) {
+        grid-row: 2;
+      }
+
+      > .label {
+        grid-column: 1 / span 2;
+      }
     }
   }
 </style>
 
 <section class="controls">
   <div class="block-chooser">
-    <span>Block type</span>
+    <span class="label">Block type</span>
     {
       blocks.map((block) => (
         <label class={block} title={block}>
